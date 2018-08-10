@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Search from './components/Search';
 import './App.css';
 
 const list = [
@@ -49,34 +50,25 @@ class App extends Component {
     const { searchTerm, list } = this.state;
     return (
       <div className="App">
-        <form>
-          <input 
-          type="text"
-          placeholder="Search by Title"
+        <Search 
           value={searchTerm}
           onChange={this.onSearchChange}
-          />
-        </form>
+        />
         {list.filter(isSearched(searchTerm)).map(item => 
             <div key={item.objectID} className={"list-item"}>
-              <span>
+              <h2>
                 <a href={item.url}>{item.title}</a>
-              </span>
-              <br />
-              <span>{item.author}</span>
-              <br />
-              <span>Comments:{item.num_comments}</span>
-              <br />
-              <span>Popularity Points:{item.points}</span>
-              <br />
-              <span>
-                <button
-                  onClick={() => this.onDismiss(item.objectID)}
-                  type="button"
-                >
-                  Dismiss
-                </button>
-              </span>
+              </h2>
+              <h3>{item.author}</h3>
+              <h4>Comments:{item.num_comments}</h4>
+              <h4>Popularity Points:{item.points}</h4>
+              <button
+                onClick={() => this.onDismiss(item.objectID)}
+                type="button"
+              >
+                Dismiss
+              </button>
+  
             </div>
         )}
       </div>
