@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Search from './components/Search';
+import Table from './components/Table';
+
 import './App.css';
 
 const list = [
@@ -20,10 +22,6 @@ const list = [
     objectID: 1,
   },
 ]
-
-const isSearched = (searchTerm) => item =>
-  item.title.toLowerCase().includes(searchTerm.toLowerCase());
-
 
 class App extends Component {
 
@@ -54,23 +52,11 @@ class App extends Component {
           value={searchTerm}
           onChange={this.onSearchChange}
         />
-        {list.filter(isSearched(searchTerm)).map(item => 
-            <div key={item.objectID} className={"list-item"}>
-              <h2>
-                <a href={item.url}>{item.title}</a>
-              </h2>
-              <h3>{item.author}</h3>
-              <h4>Comments:{item.num_comments}</h4>
-              <h4>Popularity Points:{item.points}</h4>
-              <button
-                onClick={() => this.onDismiss(item.objectID)}
-                type="button"
-              >
-                Dismiss
-              </button>
-  
-            </div>
-        )}
+        <Table 
+          list={list}
+          pattern={searchTerm}
+          onDismiss={this.onDismiss}
+        />
       </div>
     );
   }
