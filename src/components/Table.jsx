@@ -1,12 +1,9 @@
 import React from 'react';
 import Button from './Button';
 
-const isSearched = (searchTerm) => item =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase());
-
-const Table = ({ list, pattern, onDismiss }) =>
+const Table = ({ list, onDismiss }) =>
     <div>
-        {list.filter(isSearched(pattern)).map(item =>
+        {list.map(item =>
           <div key={item.objectID} className={"list-item"}>
             <h2>
                 <a href={item.url}>{item.title}</a>
