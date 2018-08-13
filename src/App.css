@@ -48,3 +48,8 @@
   padding: 20px;
   font-style: bold;
 }
+
+.error_text {
+  text-align: center;
+  font-size: 3em;
+}
