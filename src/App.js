@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import Search from './components/Search';
 import Table from './components/Table';
 import Button from './components/Button';
+import Header from './components/Header';
 
 import './App.css';
 
-const DEFAULT_QUERY = 'redux';
+const DEFAULT_QUERY = '';
 
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
@@ -24,17 +25,18 @@ class App extends Component {
   }
 
   setSearchTopStories = (result) => {
+    //Get the hits and the page from the result.
     const { hits, page } = result;
-
+    //Check to see if there are already old hits.
     const oldHits = page !== 0
       ? this.state.result.hits
       : [];
-
+    //Merge the old and new hits.
     const updatedHits = [
       ...oldHits,
       ...hits 
     ];
-
+    //Set the merged hits and page in the local state.
     this.setState({
       result: { hits: updatedHits, page }
     });
@@ -76,6 +78,7 @@ class App extends Component {
     return (
       <div>
         <div className="App">
+          <Header />
           <Search 
             value={searchTerm}
             onChange={this.onSearchChange}

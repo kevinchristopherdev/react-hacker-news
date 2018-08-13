@@ -28,7 +28,7 @@ border: 1px solid #dddddd;
 }
 
 button {
-padding: 10px; 
+padding: 5px; 
 border-radius: 5px; 
 border: 1px solid #dddddd;
 background: rgba(0,0,0,0.2); 
@@ -37,8 +37,8 @@ cursor: pointer;
 }
 
 button:hover { 
-color: #222;
-background-color: rgba(200,0,0,0.5);
+color:yellow;
+background-color: rgba(255,0,0,0.8);
 }
 
 *:focus { 

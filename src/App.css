@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  padding-top: 10%;
+  padding-top: 2%;
 }
 
 .App-logo {
@@ -33,4 +33,14 @@
   background-color: rgba(0,0,0,0.2);
   margin-top: 40px;
   padding-left: 20%;
+}
+
+.title-header {
+  background-color:  rgba(0,0,0,0.2);
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.dismiss-button {
+  margin-left: 50%;
 }
