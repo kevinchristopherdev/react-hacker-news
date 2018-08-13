@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 
 const Search = ({ value, onChange, onSubmit, children }) =>
   <form onSubmit={onSubmit}>
@@ -7,9 +8,9 @@ const Search = ({ value, onChange, onSubmit, children }) =>
         value={value}
         onChange={onChange}
     />
-    <button type="submit">
+    <Button type="submit">
       {children}
-    </button>
+    </Button>
   </form>
 
 export default Search;

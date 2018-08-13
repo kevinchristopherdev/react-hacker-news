@@ -11,7 +11,10 @@ const Table = ({ list, onDismiss }) =>
             <h3>{item.author}</h3>
             <h4>Comments:{item.num_comments}</h4>
             <h4>Popularity Points:{item.points}</h4>
-            <Button onClick={() => onDismiss(item.objectID)}>
+            <Button 
+                onClick={() => onDismiss(item.objectID)}
+                className="dismiss-butt"
+            >
                 Dismiss
             </Button>
           </div>
