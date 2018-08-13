@@ -6,7 +6,7 @@ import Header from './components/Header';
 
 import './App.css';
 
-const DEFAULT_QUERY = '';
+const DEFAULT_QUERY = 'Redux';
 
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
@@ -94,7 +94,10 @@ class App extends Component {
             />
           }
         <div className="interactions">
-          <Button onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}>
+          <Button 
+          onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}
+          className="more_butt"
+          >
             More
           </Button>
         </div>

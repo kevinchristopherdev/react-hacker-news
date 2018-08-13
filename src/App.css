@@ -32,15 +32,19 @@
   padding: 20px;
   background-color: rgba(0,0,0,0.2);
   margin-top: 40px;
-  padding-left: 20%;
+  padding-left: 10%;
 }
 
 .title-header {
-  background-color:  rgba(0,0,0,0.2);
+  background-color: #222;
+  color: rgba(255,255,255,0.8);
   padding: 10px;
   margin-bottom: 30px;
 }
 
-.dismiss-button {
-  margin-left: 50%;
+.more_butt {
+  background-color: #222;
+  width:100%;
+  padding: 20px;
+  font-style: bold;
 }
