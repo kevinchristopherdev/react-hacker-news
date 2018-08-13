@@ -29,7 +29,8 @@
 }
 
 .list-item {
-  padding: 10px;
+  padding: 20px;
   background-color: rgba(0,0,0,0.2);
   margin-top: 40px;
+  padding-left: 20%;
 }
