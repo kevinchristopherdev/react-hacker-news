@@ -38,7 +38,7 @@ cursor: pointer;
 
 button:hover { 
 color: #222;
-background-color: rgba(100,0,100,0.5);
+background-color: rgba(200,0,0,0.5);
 }
 
 *:focus { 
