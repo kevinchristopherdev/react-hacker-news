@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 import Search from './components/Search';
 import Table from './components/Table';
@@ -18,6 +21,8 @@ import {
   PARAM_HPP,
 } from './constants/';
 
+library.add(faSpinner)
+
 class App extends Component {
   _isMounted = false;
 
@@ -29,6 +34,7 @@ class App extends Component {
       searchKey: '',
       searchTerm: DEFAULT_QUERY,
       error: null,
+      isLoading: false,
     };
   }
 
@@ -53,11 +59,14 @@ class App extends Component {
         ...results,
         //store the updated result by searchKey in the results map. Non fluctuant now
         [searchKey]: { hits: updatedHits, page }
-      }
+      },
+      isLoading: false
     });
   }
 
   fetchSearchTopStories = (searchTerm, page = 0) => {
+    this.setState({ isLoading: true });
+
     axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then(result => this._isMounted && this.setSearchTopStories(result.data))
       .catch(error => this._isMounted && this.setState({ error }));
@@ -110,7 +119,13 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm, results, searchKey, error } = this.state;
+    const { 
+      searchTerm, 
+      results, 
+      searchKey, 
+      error,
+      isLoading,
+    } = this.state;
 
     const page = (
       results && 
@@ -146,12 +161,15 @@ class App extends Component {
             />
           }
         <div className="interactions">
-          <Button 
+         { isLoading  
+            ? <FontAwesomeIcon icon="spinner" className="fa-2x spinner" />
+          : <Button 
           onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
           className="more_butt"
           >
             More
           </Button>
+         }
         </div>
       </div>
     );
