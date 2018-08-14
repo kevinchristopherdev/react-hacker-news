@@ -1,0 +1,8 @@
+
+.sort-button {
+  min-width: 25%;
+  margin-top: 2%;
+  background-color: #222;
+  color: rgba(255,255,255,0.8);
+  border-radius: 0%;
+}

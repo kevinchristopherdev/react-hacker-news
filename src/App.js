@@ -35,6 +35,7 @@ class App extends Component {
       searchTerm: DEFAULT_QUERY,
       error: null,
       isLoading: false,
+      sortKey: 'NONE',
     };
   }
 
@@ -118,6 +119,10 @@ class App extends Component {
     this.setState({ searchTerm: event.target.value });
   }
 
+  onSort = (sortKey) => {
+    this.setState({ sortKey });
+  }
+
   render() {
     const { 
       searchTerm, 
@@ -125,6 +130,7 @@ class App extends Component {
       searchKey, 
       error,
       isLoading,
+      sortKey,
     } = this.state;
 
     const page = (
@@ -157,12 +163,14 @@ class App extends Component {
             </div>
             : <Table 
               list={list}
+              sortKey={sortKey}
+              onSort={this.onSort}
               onDismiss={this.onDismiss}
             />
           }
         <div className="interactions">
          { isLoading  
-            ? <FontAwesomeIcon icon="spinner" className="fa-2x spinner" />
+            ? <FontAwesomeIcon icon="spinner" className="fa-2x fa-spin spinner" />
           : <Button 
           onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
           className="more_butt"

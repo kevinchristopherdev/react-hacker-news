@@ -1,11 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { sortBy } from 'lodash';
 
 import Button from './Button';
+import './styles.css';
 
-const Table = ({ list, onDismiss }) =>
+const SORTS = {
+  NONE: list => list,
+  TITLE: list => sortBy(list, 'title'),
+  AUTHOR: list => sortBy(list, 'author'),
+  COMMENTS: list => sortBy(list, 'num_comments').reverse(),
+  POINTS: list => sortBy(list, 'points').reverse(),
+};
+
+const Sort = ({ sortKey, onSort, children }) => 
+  <Button 
+    onClick={() => onSort(sortKey)}
+    className="sort-button">
+    {children}
+  </Button>
+
+const Table = ({ 
+  list,
+  sortKey,
+  onSort, 
+  onDismiss }) =>
   <div>
-    {list.map(item =>
+    <div className="table-header">
+      <span>
+        <Sort
+          sortKey={'TITLE'}
+          onSort={onSort}
+        > Title
+        </Sort>
+      </span>
+      <span>
+        <Sort
+          sortKey={'AUTHOR'}
+          onSort={onSort}
+        >
+          Author
+        </Sort>
+      </span>
+      <span>
+        <Sort
+          sortKey={'COMMENTS'}
+          onSort={onSort}
+        > Comments
+        </Sort>
+      </span>
+      <span>
+        <Sort
+          sortKey={'POINTS'}
+          onSort={onSort}
+        >
+          Points
+        </Sort>
+      </span>
+    </div>
+
+    {SORTS[sortKey](list).map(item =>
       <div key={item.objectID} className={"list-item"}>
         <h2>
             <a href={item.url}>{item.title}</a>
